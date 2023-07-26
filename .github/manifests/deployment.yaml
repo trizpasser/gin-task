@@ -54,7 +54,7 @@ metadata:
       more_set_headers "X-Content-Type-Options: nosniff";
 spec:
   rules:
-    - host: microservices.cloudageskill.com
+    - host: google.com
       http:
         paths:
         - backend:
