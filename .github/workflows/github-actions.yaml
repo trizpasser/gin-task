@@ -12,16 +12,16 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.9.2'  # Substitua por uma versão do Python 3.5 ou superior
-
+      
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
         pip install google-github-actions/setup-gcloud  # Instala o plugin gcloud para GitHub Actions
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.9.2'  # Substitua por uma versão do Python 3.5 ou superio
 
     - name: Configure Google Cloud SDK
       env:
