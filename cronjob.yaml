@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: teste
+  namespace: gin-space
+spec:
+  schedule: * * * * *
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: teste
+              image: ./teste.py
+          restartPolicy: Never
