@@ -27,4 +27,4 @@ jobs:
         kubectl version
 
     - name: Deploy CronJob
-      run: kubectl apply -f /path/to/your/cronjob.yaml
+      run: kubectl apply -f cronjob.yaml
