@@ -52,15 +52,3 @@ metadata:
       more_set_headers "X-Frame-Options: Deny";
       more_set_headers "X-Xss-Protection: 1; mode=block";
       more_set_headers "X-Content-Type-Options: nosniff";
-spec:
-  rules:
-    - host: google.com
-      http:
-        paths:
-        - backend:
-            service:
-              name: python-app-service
-              port: 
-                number: 8080
-          path: /teste
-          pathType: ImplementationSpecific
