@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: meu-aplicativo
-        image: nome_da_sua_imagem_docker:latest # Substitua "latest" pela tag da sua imagem Docker
+        image: meu-aplicativo:latest # Substitua "latest" pela tag da sua imagem Docker
         ports:
         - containerPort: 80 # Porta exposta pelo contêiner
         resources:
