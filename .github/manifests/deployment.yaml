@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: meu-aplicativo
-        image: meu-aplicativo:latest # Substitua "latest" pela tag da sua imagem Docker
+        image: gcr.io/gin-prod-393923/meu-aplicativo:latest # Substitua "latest" pela tag da sua imagem Docker
         ports:
         - containerPort: 80 # Porta exposta pelo contêiner
         resources:
