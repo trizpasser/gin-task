@@ -9,8 +9,8 @@ env:
   PROJECT_ID: gin-prod-393923
   GKE_CLUSTER: cluster-gin	 
   GKE_ZONE: us-central1-a   
-  DEPLOYMENT_NAME: python-app
-  IMAGE: python-app
+  DEPLOYMENT_NAME: meu-aplicativo
+  IMAGE: meu-aplicativo
 
 jobs:
   setup-build-publish-deploy:
