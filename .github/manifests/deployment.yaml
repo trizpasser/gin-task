@@ -53,6 +53,7 @@ metadata:
       more_set_headers "X-Content-Type-Options: nosniff";
 spec:
   rules:
+   - host: 10.56.1.21
       http:
         paths:
         - backend:
