@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: python-app
-          image: gcr.io/gin-prod-393923/python-app:GITHUB_SHA
+          image: gcr.io/atividade-com-helm-392000/python-app:GITHUB_SHA
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
