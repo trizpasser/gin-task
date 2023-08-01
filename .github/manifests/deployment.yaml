@@ -1,26 +1,53 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: meu-aplicativo
+ name: python-app
+ labels:
+   app: python-app
 spec:
-  replicas: 3 # Número desejado de réplicas do aplicativo
+ replicas: 1
+ selector:
+   matchLabels:
+     app: python-app
+ template:
+   metadata:
+     labels:
+       app: python-app
+   spec:
+     containers:
+       - name: python-app-hello-world
+         image: gcr.io/gin-prod-393923/python-app:GITHUB_SHA
+         imagePullPolicy: Always
+         ports:
+           - containerPort: 8080
+         readinessProbe:
+           httpGet:
+             path: /
+             port: 8080
+           initialDelaySeconds: 5
+           timeoutSeconds: 5
+           periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-app-service
+  labels:
+    app: python-app
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
   selector:
-    matchLabels:
-      app: meu-aplicativo
-  template:
-    metadata:
-      labels:
-        app: meu-aplicativo
-    spec:
-      containers:
-      - name: meu-aplicativo
-        image: gcr.io/gin-prod-393923/meu-aplicativo:latest # Substitua "latest" pela tag da sua imagem Docker
-        ports:
-        - containerPort: 80 # Porta exposta pelo contêiner
-        resources:
-          limits:
-            cpu: "0.5" # Limites de recursos de CPU para o contêiner
-            memory: "512Mi" # Limites de recursos de memória para o contêiner
-          requests:
-            cpu: "0.2" # Requisições de recursos de CPU para o contêiner
-            memory: "256Mi" # Requisições de recursos de memória para o contêiner
+    app: python-app
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: python-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Frame-Options: Deny";
+      more_set_headers "X-Xss-Protection: 1; mode=block";
+      more_set_headers "X-Content-Type-Options: nosniff";
